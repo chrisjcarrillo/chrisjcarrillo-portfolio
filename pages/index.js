@@ -22,8 +22,6 @@ import moment, { now } from 'moment';
 
 
 export default function Home(){
-    
-    // let me = settings;
 
     let currentTime = moment().format("dddd, MMMM Do YYYY, h:mm A");
 
@@ -42,20 +40,10 @@ export default function Home(){
             <div className={styles.inner_main_right}>
                 <div className={styles.inner}>
                     <h1 className={styles.hello_world}>Hello World!</h1>
-                    {/* <h1 className={styles.greeting}>I'm {me.alias}.</h1> */}
                     <div className={styles.label_container}>
                         <h1 className={styles.label}>A Miami Based <br /> Creative & Software Engineer </h1>
                     </div>
                     <div className={styles.icon_container}>
-                        {/* <a href={me.linkedIn} passHref={true} target="_blank">
-                            <FontAwesomeIcon icon={["fab", "linkedin-in"]} size="2x"/>
-                        </a>
-                        <a href={me.instagram} passHref={true} target="_blank">
-                            <FontAwesomeIcon icon={["fab", "instagram"]} size="2x"/>
-                        </a>
-                        <a href={me.github} passHref={true} target="_blank">
-                            <FontAwesomeIcon icon={["fab", "github"]} size="2x"/>
-                        </a> */}
                     </div>
                 </div>
                 <div className={styles.inner}>
@@ -68,7 +56,6 @@ export default function Home(){
                             </div>
                             <div className={styles.ip_container}>
                                 <span>
-                                    {/* Current IP: {me.ipAddress} */}
                                 </span>
                             </div>
                         </div>
@@ -77,7 +64,7 @@ export default function Home(){
                                     last login: {currentTime}
                                 </span>
                                 <span className={styles.extra_info}>
-                                    {/* current location: {me.city + ',' + me.state + ',' + me.country } */}
+                                
                                 </span>
                                 <span className={styles.extra_info}>
                                     device information: {
