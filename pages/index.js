@@ -94,7 +94,7 @@ export default function Home({ settings }){
                                     <span className={styles.nav_dollar}>$ </span><a>projects</a>
                                 </h2>
                                 <h2 className={styles.nav_link}>
-                                    <span className={styles.nav_dollar}>$</span><a>contact</a>
+                                    <span className={styles.nav_dollar}>$ </span><a>contact</a>
                                 </h2>
                         </div>
                     </div>
