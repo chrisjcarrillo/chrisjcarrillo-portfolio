@@ -237,3 +237,122 @@
     }
 
 }
+
+// iphone x
+@media only screen and (max-width: 414px){
+    .inner_main_right{
+        padding: 2rem 2rem 2rem 2rem;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .inner{
+        display: flex;
+        flex-flow: row wrap;
+        flex: 1 50%;
+        justify-content: center;
+        align-items: center;
+        div{
+            &.label_container{
+                flex: 1 100%;
+                width: 100%;
+                margin: 0;
+                margin-top: 10px;
+                h1{
+                    &.label{
+                        @include greeting-size(13px);
+                        letter-spacing: 3px;
+                        font-weight: 300;
+                    } 
+                }
+            }
+            &.icon_container{
+                display: flex;
+                flex: 1 100%;
+                flex-flow: row wrap;
+                text-align: left;
+                svg{
+                    margin-top: 1.5rem;
+                    margin-right: 3rem;
+                }
+            }
+        }
+        h1{
+            flex: 1 100%;
+            margin: 0;
+            &.hello_world{
+                font-weight: 300;
+                font-style: italic;
+                @include greeting-size(38px);
+                letter-spacing: 3.25px;
+            }
+            &.greeting{
+                font-weight: 700;
+                @include greeting-size(45px);
+                margin-top: 10px;
+                letter-spacing: 3.25px;
+            }
+        }
+    }
+    .cli{ 
+        margin-top: 2rem;
+        background: white;
+        flex: 1 100%;
+        display: flex;
+        border: black solid 1px;
+        flex-direction: column;
+        border-radius: 4px;
+        &_header{
+            flex: 1 100%; 
+            background: black;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            color: white;
+            display: flex;
+            flex-flow: row;
+            border-radius: 4px 4px 0 0;
+            .dot_container{
+                flex: 1 8%;
+            }
+            .ip_container{
+                font-size: 0.7rem;
+                align-self: center;
+                flex: 1 50%;
+            }
+        }
+        &_inner{
+            span.extra_info{
+                display: block;
+                margin-top: 2px;
+                @include greeting-size(10px);
+            }
+            span.nav_dollar{
+                display: unset;
+            }
+            h2{
+                margin-top: 0.2rem;
+                a{
+                    text-decoration: underline;
+                }
+            }
+            height: 100%;
+            background: white;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            color: black;
+            border-radius: 4px 4px 0 0;
+        }
+    }
+    .nav_link{
+        padding: 0.5rem 0;
+        font-size: 30px;
+        font-weight: 300;
+        letter-spacing: 3px;
+    }
+    .dot {
+        height: 8px;
+        width: 8px;
+        margin: 0 10px 0 0;
+        background-color: white;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+}
