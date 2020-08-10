@@ -8,7 +8,7 @@ import moment, { now } from 'moment';
 
 export async function getStaticProps() {
     try {
-        const result = await fetch('http://localhost:3000/api/default');
+        const result = await fetch('http://www.chrisjcarrillo.dev/api/default');
         const settings = await result.json();
         return {
             props: {
