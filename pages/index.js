@@ -1,65 +1,106 @@
+import React, { Component } from 'react';
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from '../styles/Home.module.scss';
+import { browserName, deviceType, osName, osVersion } from 'react-device-detect';
+import moment, { now } from 'moment';
 
-export default function Home() {
-  return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+export async function getStaticProps() {
+    try {
+        const result = await fetch('http://localhost:3000/api/default');
+        const settings = await result.json();
+        return {
+            props: {
+                settings,
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+export default function Home({ settings }){
+    
+    let me = settings;
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+    let currentTime = moment().format("dddd, MMMM Do YYYY, h:mm A");
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+    let currentBrowser = { 
+        name: browserName,
+        type: deviceType,
+        osName: osName,
+        osVersion: osVersion
+    }
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    console.log(browserName);
+
+    return (
+        <div className={styles.container}>
+            {/* <header className={styles.header}>TEXT</header>     */}
+            <div className={styles.inner_main_right}>
+                <div className={styles.inner}>
+                    <h1 className={styles.hello_world}>Hello World!</h1>
+                    <h1 className={styles.greeting}>I'm {me.alias}.</h1>
+                    <div className={styles.label_container}>
+                        <h1 className={styles.label}>A Miami Based <br /> Creative & Software Engineer </h1>
+                    </div>
+                    <div className={styles.icon_container}>
+                        <a href={me.linkedIn} passHref={true} target="_blank">
+                            <FontAwesomeIcon icon={["fab", "linkedin-in"]} size="2x"/>
+                        </a>
+                        <a href={me.instagram} passHref={true} target="_blank">
+                            <FontAwesomeIcon icon={["fab", "instagram"]} size="2x"/>
+                        </a>
+                        <a href={me.github} passHref={true} target="_blank">
+                            <FontAwesomeIcon icon={["fab", "github"]} size="2x"/>
+                        </a>
+                    </div>
+                </div>
+                <div className={styles.inner}>
+                    <div className={styles.cli}>
+                        <div className={styles.cli_header}>
+                            <div className={styles.dot_container}>
+                                <div className={styles.dot}></div>
+                                <div className={styles.dot}></div>
+                                <div className={styles.dot}></div>
+                            </div>
+                            <div className={styles.ip_container}>
+                                <span>
+                                    Current IP: {me.ipAddress}
+                                </span>
+                            </div>
+                        </div>
+                        <div className={styles.cli_inner}>
+                                <span className={styles.extra_info}>
+                                    last login: {currentTime}
+                                </span>
+                                <span className={styles.extra_info}>
+                                    current location: {me.city + ',' + me.state + ',' + me.country }
+                                </span>
+                                <span className={styles.extra_info}>
+                                    device information: {
+                                        currentBrowser.osName + ', v' + currentBrowser.osVersion + ', ' + currentBrowser.name
+                                    }
+                                </span>
+                                <h2 className={styles.nav_link}>
+                                <span className={styles.nav_dollar}>$ </span><a>about me</a>
+                                </h2>
+                                <h2 className={styles.nav_link}>
+                                    <span className={styles.nav_dollar}>$ </span><a>work</a>
+                                </h2>
+                                <h2 className={styles.nav_link}>
+                                    <span className={styles.nav_dollar}>$ </span><a>projects</a>
+                                </h2>
+                                <h2 className={styles.nav_link}>
+                                    <span className={styles.nav_dollar}>$ </span><a>contact</a>
+                                </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            {/* <footer>TEXT</footer> */}
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    ) 
 }
