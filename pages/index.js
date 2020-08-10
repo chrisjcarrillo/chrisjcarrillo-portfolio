@@ -6,24 +6,24 @@ import { browserName, deviceType, osName, osVersion } from 'react-device-detect'
 import moment, { now } from 'moment';
 
 
-export async function getStaticProps() {
-    try {
-        const result = await fetch('http://localhost:3000/api/default');
-        const settings = await result.json();
-        return {
-            props: {
-                settings,
-            }
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
+// export async function getStaticProps() {
+//     try {
+//         const result = await fetch('http://localhost:3000/api/default');
+//         const settings = await result.json();
+//         return {
+//             props: {
+//                 settings,
+//             }
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 
-export default function Home({ settings }){
+export default function Home(){
     
-    let me = settings;
+    // let me = settings;
 
     let currentTime = moment().format("dddd, MMMM Do YYYY, h:mm A");
 
@@ -47,7 +47,7 @@ export default function Home({ settings }){
                         <h1 className={styles.label}>A Miami Based <br /> Creative & Software Engineer </h1>
                     </div>
                     <div className={styles.icon_container}>
-                        <a href={me.linkedIn} passHref={true} target="_blank">
+                        {/* <a href={me.linkedIn} passHref={true} target="_blank">
                             <FontAwesomeIcon icon={["fab", "linkedin-in"]} size="2x"/>
                         </a>
                         <a href={me.instagram} passHref={true} target="_blank">
@@ -55,7 +55,7 @@ export default function Home({ settings }){
                         </a>
                         <a href={me.github} passHref={true} target="_blank">
                             <FontAwesomeIcon icon={["fab", "github"]} size="2x"/>
-                        </a>
+                        </a> */}
                     </div>
                 </div>
                 <div className={styles.inner}>
@@ -68,7 +68,7 @@ export default function Home({ settings }){
                             </div>
                             <div className={styles.ip_container}>
                                 <span>
-                                    Current IP: {me.ipAddress}
+                                    {/* Current IP: {me.ipAddress} */}
                                 </span>
                             </div>
                         </div>
@@ -77,7 +77,7 @@ export default function Home({ settings }){
                                     last login: {currentTime}
                                 </span>
                                 <span className={styles.extra_info}>
-                                    current location: {me.city + ',' + me.state + ',' + me.country }
+                                    {/* current location: {me.city + ',' + me.state + ',' + me.country } */}
                                 </span>
                                 <span className={styles.extra_info}>
                                     device information: {
