@@ -42,7 +42,7 @@ export default function Home(){
             <div className={styles.inner_main_right}>
                 <div className={styles.inner}>
                     <h1 className={styles.hello_world}>Hello World!</h1>
-                    <h1 className={styles.greeting}>I'm {me.alias}.</h1>
+                    {/* <h1 className={styles.greeting}>I'm {me.alias}.</h1> */}
                     <div className={styles.label_container}>
                         <h1 className={styles.label}>A Miami Based <br /> Creative & Software Engineer </h1>
                     </div>
