@@ -123,6 +123,15 @@
     display: inline-block;
 }
 
+@media only screen and (max-width: 1024px){
+    .inner_main_right{
+        flex: 1 100%;
+        padding: 0 6rem 0 6rem;
+        display: flex;
+        flex-flow: row wrap;
+    }
+}
+
 // iphone x
 @media only screen and (max-width: 375px){
     .inner_main_right{
