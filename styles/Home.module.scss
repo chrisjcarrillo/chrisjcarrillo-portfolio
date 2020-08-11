@@ -259,10 +259,10 @@
         flex-flow: row wrap;
         justify-content: center;
         align-items: center;
-        height: unset;
+        min-height: unset;
     }
     .inner_main_right{
-        padding: 3rem 2rem;
+        padding: 4rem 2rem;
         display: flex;
         flex-flow: row wrap;
     }
