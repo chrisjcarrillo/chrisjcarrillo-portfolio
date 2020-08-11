@@ -1,8 +1,10 @@
 import { count } from 'console';
+import next from 'next';
 
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 let ipify = require ('ipify');
 let axios = require('axios');
+let requestIp = require('request-ip');
 
 var options = {
   "method": "get",
@@ -13,7 +15,18 @@ var options = {
   }
 };
 
+// require request-ip and register it as middleware
+
+const connectMiddleware = handler => async (req, res) => {
+  
+  return handler(req, res);
+}
+
+
 export default async (req, res) => {
+  
+  const getNewIp = requestIp.getClientIp(req);
+  console.log(getNewIp);
 
   const resultIp = await ipify({useIPv6: true});
   const response = await axios(options);
@@ -31,7 +44,7 @@ export default async (req, res) => {
     email: 'chrisjcarrillo@hotmail.com',
     // countryCode: '+1',
     // phoneNumber: '786-868-3438',
-    ipAddress: resultIp,
+    ipAddress: getNewIp,
     country: countryCode,
     state: stateCode, 
     city: cityCode,
