@@ -17,27 +17,6 @@ const connectMiddleware = handler => async (req, res) => {
 
 export default async (req, res) => {
   
-  const getNewIp = req.headers['x-forwarded-for'];
-  console.log(getNewIp);
-
-  const resultIp = await ipify({useIPv6: true});
-  const getReqIp = await axios({
-    "method": "get",
-    "url": "https://api.ipify.org?format=jsonp=",
-  })
-  const response = await axios({
-    "method": "get",
-    "url": "https://freegeoip.app/json/" + getNewIp,
-    "headers": {
-      "accept": "application/json",
-      "content-type": "application/json"
-    }
-  });
-  const currentData = response.data;
-  const countryCode = currentData.country_code;
-  const stateCode = currentData.region_code;
-  const cityCode = currentData.city;
-
   res.statusCode = 200;
   
   res.json({ 
@@ -45,12 +24,6 @@ export default async (req, res) => {
     firstName: 'Christopher',
     lastName: 'Carrillo',
     email: 'chrisjcarrillo@hotmail.com',
-    // countryCode: '+1',
-    // phoneNumber: '786-868-3438',
-    ipAddress: getNewIp,
-    country: countryCode,
-    state: stateCode, 
-    city: cityCode,
     linkedIn: 'https://www.linkedin.com/in/christopherjcarrillo/',
     instagram: 'https://www.instagram.com/chrisjcarrillo/',
     github: 'https://github.com/chrisjcarrillo',

@@ -5,10 +5,10 @@ import styles from '../styles/Home.module.scss';
 import { browserName, deviceType, osName, osVersion } from 'react-device-detect';
 import moment, { now } from 'moment';
 
-
 export async function getStaticProps() {
     try {
         const result = await fetch('http://chrisjcarrillo.dev/api/default');
+        
         const settings = await result.json();
         return {
             props: {
@@ -37,9 +37,12 @@ export default function Home({ settings }){
     console.log(browserName);
 
     return (
-        <div className={styles.container}>
+        <div className={`${styles['container']}`}>
             {/* <header className={styles.header}>TEXT</header>     */}
-            <div className={styles.inner_main_right}>
+            <div className={
+                `${styles['inner_main_right']} ${styles['animated']} ${styles['animatedFadeInUp']}
+                 ${styles['fadeInUp']}`
+            }>
                 <div className={styles.inner}>
                     <h1 className={styles.hello_world}>Hello World!</h1>
                     <h1 className={styles.greeting}>I'm {me.alias}.</h1>
@@ -68,7 +71,7 @@ export default function Home({ settings }){
                             </div>
                             <div className={styles.ip_container}>
                                 <span>
-                                    Current IP: {me.ipAddress}
+                                    Current IP: TEXT
                                 </span>
                             </div>
                         </div>
@@ -77,12 +80,10 @@ export default function Home({ settings }){
                                     last login: {currentTime}
                                 </span>
                                 <span className={styles.extra_info}>
-                                    current location: {me.city + ',' + me.state + ',' + me.country }
+                                    current location: text
                                 </span>
                                 <span className={styles.extra_info}>
-                                    device information: {
-                                        currentBrowser.osName + ', v' + currentBrowser.osVersion + ', ' + currentBrowser.name
-                                    }
+                                    device information: text
                                 </span>
                                 <h2 className={styles.nav_link}>
                                 <span className={styles.nav_dollar}>$ </span><a>about me</a>

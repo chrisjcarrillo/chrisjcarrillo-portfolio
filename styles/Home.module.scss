@@ -9,6 +9,7 @@
 
 .container{
     display: flex;
+    transform: translate3d(0px, 0px, 0px);
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
@@ -125,7 +126,7 @@
 // iphone x
 @media only screen and (max-width: 375px){
     .inner_main_right{
-        padding: 2rem 2rem 2rem 2rem;
+        padding: 1rem 2rem 1rem 2rem;
         display: flex;
         flex-flow: row wrap;
     }
@@ -244,7 +245,7 @@
 // iphone x
 @media only screen and (max-width: 414px){
     .inner_main_right{
-        padding: 2rem 2rem 2rem 2rem;
+        padding: 1rem 2rem 1rem 2rem;
         display: flex;
         flex-flow: row wrap;
     }
@@ -358,4 +359,43 @@
         display: inline-block;
     }
 
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,100px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,100px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1.2s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1.2s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
 }
