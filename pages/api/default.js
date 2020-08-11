@@ -17,7 +17,7 @@ const connectMiddleware = handler => async (req, res) => {
 
 export default async (req, res) => {
   
-  const getNewIp = requestIp.getClientIp(req);
+  const getNewIp = req.headers['x-forwarded-for'];
   console.log(getNewIp);
 
   const resultIp = await ipify({useIPv6: true});
@@ -25,7 +25,6 @@ export default async (req, res) => {
     "method": "get",
     "url": "https://api.ipify.org?format=jsonp=",
   })
-  console.log(req['x-forwarded-host']);
   const response = await axios({
     "method": "get",
     "url": "https://freegeoip.app/json/" + getNewIp,
