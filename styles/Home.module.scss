@@ -253,8 +253,16 @@
 
 // iphone x
 @media only screen and (max-width: 414px){
+    .container{
+        display: flex;
+        transform: translate3d(0px, 0px, 0px);
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+    }
     .inner_main_right{
-        padding: 1rem 2rem 1rem 2rem;
+        padding: 5rem 2rem;
         display: flex;
         flex-flow: row wrap;
     }
