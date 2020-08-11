@@ -6,14 +6,6 @@ let ipify = require ('ipify');
 let axios = require('axios');
 let requestIp = require('request-ip');
 
-var options = {
-  "method": "get",
-  "url": "https://freegeoip.app/json/",
-  "headers": {
-    "accept": "application/json",
-    "content-type": "application/json"
-  }
-};
 
 // require request-ip and register it as middleware
 
@@ -29,7 +21,19 @@ export default async (req, res) => {
   console.log(getNewIp);
 
   const resultIp = await ipify({useIPv6: true});
-  const response = await axios(options);
+  const getReqIp = await axios({
+    "method": "get",
+    "url": "https://api.ipify.org?format=jsonp=",
+  })
+  console.log(req['x-forwarded-host']);
+  const response = await axios({
+    "method": "get",
+    "url": "https://freegeoip.app/json/" + getNewIp,
+    "headers": {
+      "accept": "application/json",
+      "content-type": "application/json"
+    }
+  });
   const currentData = response.data;
   const countryCode = currentData.country_code;
   const stateCode = currentData.region_code;
