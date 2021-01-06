@@ -16,7 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "animate.css": "^4.1.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "connect": "^3.7.0",
     "env-hoc": "^1.2.7",
     "http": "^0.0.1-security",
