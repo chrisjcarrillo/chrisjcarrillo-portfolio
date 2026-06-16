@@ -2,6 +2,7 @@
 // Edit this file to update the site — no component changes needed.
 export const content = {
   alias: 'Chris',
+  name: 'Chris Carrillo',
   tagline: ['A Miami Based', 'Creative & Software Engineer'],
   about: [
     "I'm Chris Carrillo — a Miami-based creative and software engineer.",
@@ -42,3 +43,23 @@ export const content = {
     github: 'https://github.com/chrisjcarrillo',
   },
 };
+
+// ANSI Shadow figlet — "CHRIS CARRILLO". Lines must stay un-indented.
+export const bannerFull = `
+ ██████╗██╗  ██╗██████╗ ██╗███████╗     ██████╗ █████╗ ██████╗ ██████╗ ██╗██╗     ██╗      ██████╗
+██╔════╝██║  ██║██╔══██╗██║██╔════╝    ██╔════╝██╔══██╗██╔══██╗██╔══██╗██║██║     ██║     ██╔═══██╗
+██║     ███████║██████╔╝██║███████╗    ██║     ███████║██████╔╝██████╔╝██║██║     ██║     ██║   ██║
+██║     ██╔══██║██╔══██╗██║╚════██║    ██║     ██╔══██║██╔══██╗██╔══██╗██║██║     ██║     ██║   ██║
+╚██████╗██║  ██║██║  ██║██║███████║    ╚██████╗██║  ██║██║  ██║██║  ██║██║███████╗███████╗╚██████╔╝
+ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝     ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝ ╚═════╝
+`;
+
+// ANSI Shadow figlet — "CHRIS" (mobile). Lines must stay un-indented.
+export const bannerShort = `
+ ██████╗██╗  ██╗██████╗ ██╗███████╗
+██╔════╝██║  ██║██╔══██╗██║██╔════╝
+██║     ███████║██████╔╝██║███████╗
+██║     ██╔══██║██╔══██╗██║╚════██║
+╚██████╗██║  ██║██║  ██║██║███████║
+ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+`;
