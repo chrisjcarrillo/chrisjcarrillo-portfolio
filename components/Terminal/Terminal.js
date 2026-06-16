@@ -49,18 +49,18 @@ export default function Terminal() {
   }, [history, done]);
 
   return (
-    <div className="w-full bg-white border border-black rounded overflow-hidden">
+    <div className="w-full h-[calc(100vh-2rem)] md:h-[calc(100vh-3rem)] flex flex-col bg-white border border-black rounded overflow-hidden">
       <header className="bg-black text-white flex items-center px-4 py-2">
         <span className="flex gap-2.5">
           <span className="h-3 w-3 bg-white rounded-full inline-block" />
           <span className="h-3 w-3 bg-white rounded-full inline-block" />
           <span className="h-3 w-3 bg-white rounded-full inline-block" />
         </span>
-        <span className="flex-1 text-center text-sm">Current IP: {visitor.ip}</span>
+        <span className="flex-1 text-center text-sm">chris@portfolio: ~</span>
         <span className="w-8" />
       </header>
 
-      <div className="bg-white text-black px-4 py-3 max-h-[60vh] overflow-y-auto">
+      <div className="flex-1 min-h-0 bg-white text-black px-4 py-3 overflow-y-auto">
         <BootSequence
           infoLines={infoLines}
           visibleCount={visibleCount}
