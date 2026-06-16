@@ -6,9 +6,11 @@
 
 **Architecture:** Pages Router, fully client-driven terminal. `pages/index.js` renders the intro panel + a `<Terminal />`. The terminal owns history state and composes a presentational `BootSequence`, an interactive `CommandBar`, a `commands` registry (pure, content-driven), and hooks for visitor info, boot timing, and reduced-motion. All copy lives in one `data/content.js`.
 
-**Tech Stack:** Next.js 16 (Pages Router), React 19, SCSS modules, `moment`, FontAwesome 7. No animation library, no new runtime deps.
+**Tech Stack:** Next.js 16 (Pages Router), React 19, **Tailwind CSS v4** (via `@tailwindcss/postcss`), `moment`, FontAwesome 7. No animation library.
 
 **Verification note:** This project has no test framework (confirmed in the spec). Pure functions get a throwaway Node assertion; everything else is verified with `yarn build` (must compile clean) and browser dogfooding via the gstack `/browse` skill with screenshots. Each task ends in a commit.
+
+**Styling update (mid-execution decision):** The project is being fully migrated from SCSS modules to **Tailwind CSS v4**. Tailwind is already installed and configured (`postcss.config.mjs`, `styles/globals.css` is the Tailwind entry with custom `@theme` animations `slide-up`, `blink`, `fade-in-up`). All terminal components use Tailwind utility classes inline — there is **no `Terminal.module.scss`** (Task 4 below is superseded). Integration (Task 8) migrates `pages/index.js` to Tailwind, deletes `styles/Home.module.scss` + `styles/Home.module.css`, and removes the now-unused `sass` and `react-device-detect` dependencies.
 
 ---
 
