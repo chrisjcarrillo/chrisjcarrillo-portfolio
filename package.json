@@ -3,33 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@babel/runtime-corejs2": "^7.11.2",
-    "@babel/runtime-corejs3": "^7.11.2",
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-brands-svg-icons": "^5.14.0",
-    "@fortawesome/free-regular-svg-icons": "^5.14.0",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "animate.css": "^4.1.0",
-    "axios": "^0.19.2",
-    "connect": "^3.7.0",
-    "env-hoc": "^1.2.7",
-    "http": "^0.0.1-security",
-    "https": "^1.0.0",
-    "ipify": "^4.0.0",
-    "moment": "^2.27.0",
-    "next": "^9.5.1",
-    "public-ip": "^4.0.2",
-    "react": "^16.13.1",
-    "react-device-detect": "^1.13.1",
-    "react-dom": "^16.13.1",
-    "react-spring": "^8.0.27",
-    "request-ip": "^2.1.3",
-    "sass": "^1.26.10"
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/react-fontawesome": "^3.3.1",
+    "moment": "^2.30.1",
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-device-detect": "^2.2.3",
+    "react-dom": "^19.2.7",
+    "sass": "^1.101.0"
   }
 }

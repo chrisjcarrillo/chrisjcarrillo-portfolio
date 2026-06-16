@@ -5,18 +5,28 @@ import styles from '../styles/Home.module.scss';
 import { browserName, deviceType, osName, osVersion } from 'react-device-detect';
 import moment, { now } from 'moment';
 
+const DEFAULT_SETTINGS = {
+    alias: 'Chris',
+    firstName: 'Christopher',
+    lastName: 'Carrillo',
+    email: 'chrisjcarrillo@hotmail.com',
+    linkedIn: 'https://www.linkedin.com/in/christopherjcarrillo/',
+    instagram: 'https://www.instagram.com/chrisjcarrillo/',
+    github: 'https://github.com/chrisjcarrillo',
+};
+
 export async function getStaticProps() {
     try {
-        const result = await fetch('http://chrisjcarrillo.dev/api/default');
-        
+        const result = await fetch('https://chrisjcarrillo.dev/api/default');
         const settings = await result.json();
         return {
-            props: {
-                settings,
-            }
-        }
+            props: { settings },
+        };
     } catch (error) {
         console.log(error);
+        return {
+            props: { settings: DEFAULT_SETTINGS },
+        };
     }
 }
 
