@@ -24,7 +24,7 @@ export default function Banner() {
         {bannerShort.replace(/^\n/, '')}
       </pre>
 
-      <div className="mt-3 text-sm md:text-base">
+      <div className="mt-3 text-sm md:text-base lowercase">
         <span className="md:hidden font-bold">{content.name} — </span>
         {content.tagline.join(' ')}
       </div>
