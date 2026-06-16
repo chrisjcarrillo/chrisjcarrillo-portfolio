@@ -1,117 +1,47 @@
-import React, { Component } from 'react';
-import Head from 'next/head'
+import Head from 'next/head';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from '../styles/Home.module.scss';
-import { browserName, deviceType, osName, osVersion } from 'react-device-detect';
-import moment, { now } from 'moment';
+import { content } from '../data/content';
+import Terminal from '../components/Terminal/Terminal';
 
-const DEFAULT_SETTINGS = {
-    alias: 'Chris',
-    firstName: 'Christopher',
-    lastName: 'Carrillo',
-    email: 'chrisjcarrillo@hotmail.com',
-    linkedIn: 'https://www.linkedin.com/in/christopherjcarrillo/',
-    instagram: 'https://www.instagram.com/chrisjcarrillo/',
-    github: 'https://github.com/chrisjcarrillo',
-};
+export default function Home() {
+  const c = content.contact;
 
-export async function getStaticProps() {
-    try {
-        const result = await fetch('https://chrisjcarrillo.dev/api/default');
-        const settings = await result.json();
-        return {
-            props: { settings },
-        };
-    } catch (error) {
-        console.log(error);
-        return {
-            props: { settings: DEFAULT_SETTINGS },
-        };
-    }
-}
+  return (
+    <div className="flex flex-wrap justify-center items-center min-h-screen font-mono">
+      <Head>
+        <title>Chris Carrillo — Creative &amp; Software Engineer</title>
+        <meta
+          name="description"
+          content="Chris Carrillo — a Miami-based creative and software engineer."
+        />
+      </Head>
 
-
-export default function Home({ settings }){
-    
-    let me = settings;
-
-    let currentTime = moment().format("dddd, MMMM Do YYYY, h:mm A");
-
-    let currentBrowser = { 
-        name: browserName,
-        type: deviceType,
-        osName: osName,
-        osVersion: osVersion
-    }
-
-    console.log(browserName);
-
-    return (
-        <div className={`${styles['container']}`}>
-            {/* <header className={styles.header}>TEXT</header>     */}
-            <div className={
-                `${styles['inner_main_right']} ${styles['animated']} ${styles['animatedFadeInUp']}
-                 ${styles['fadeInUp']}`
-            }>
-                <div className={styles.inner}>
-                    <h1 className={styles.hello_world}>Hello World!</h1>
-                    <h1 className={styles.greeting}>I'm {me.alias}.</h1>
-                    <div className={styles.label_container}>
-                        <h1 className={styles.label}>A Miami Based <br /> Creative & Software Engineer </h1>
-                    </div>
-                    <div className={styles.icon_container}>
-                        <a href={me.linkedIn} passHref={true} target="_blank">
-                            <FontAwesomeIcon icon={["fab", "linkedin-in"]} size="2x"/>
-                        </a>
-                        <a href={me.instagram} passHref={true} target="_blank">
-                            <FontAwesomeIcon icon={["fab", "instagram"]} size="2x"/>
-                        </a>
-                        <a href={me.github} passHref={true} target="_blank">
-                            <FontAwesomeIcon icon={["fab", "github"]} size="2x"/>
-                        </a>
-                    </div>
-                </div>
-                <div className={styles.inner}>
-                    <div className={styles.cli}>
-                        <div className={styles.cli_header}>
-                            <div className={styles.dot_container}>
-                                <div className={styles.dot}></div>
-                                <div className={styles.dot}></div>
-                                <div className={styles.dot}></div>
-                            </div>
-                            <div className={styles.ip_container}>
-                                <span>
-                                    Current IP: TEXT
-                                </span>
-                            </div>
-                        </div>
-                        <div className={styles.cli_inner}>
-                                <span className={styles.extra_info}>
-                                    last login: {currentTime}
-                                </span>
-                                <span className={styles.extra_info}>
-                                    current location: text
-                                </span>
-                                <span className={styles.extra_info}>
-                                    device information: text
-                                </span>
-                                <h2 className={styles.nav_link}>
-                                <span className={styles.nav_dollar}>$ </span><a>about me</a>
-                                </h2>
-                                <h2 className={styles.nav_link}>
-                                    <span className={styles.nav_dollar}>$ </span><a>work</a>
-                                </h2>
-                                <h2 className={styles.nav_link}>
-                                    <span className={styles.nav_dollar}>$ </span><a>projects</a>
-                                </h2>
-                                <h2 className={styles.nav_link}>
-                                    <span className={styles.nav_dollar}>$ </span><a>contact</a>
-                                </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>            
-            {/* <footer>TEXT</footer> */}
+      <main className="w-full flex flex-wrap items-center gap-y-12 px-8 md:px-16 xl:px-72 animate-fade-in-up">
+        <div className="flex-1 basis-full md:basis-1/2 flex flex-col justify-center">
+          <h1 className="text-5xl md:text-6xl font-light italic tracking-wider">Hello World!</h1>
+          <h1 className="text-5xl md:text-6xl font-bold tracking-wider mt-2">
+            I&apos;m {content.alias}.
+          </h1>
+          <h2 className="text-2xl md:text-3xl font-light tracking-wider mt-4 leading-snug">
+            {content.tagline[0]} <br /> {content.tagline[1]}
+          </h2>
+          <div className="flex gap-12 mt-10">
+            <a href={c.linkedIn} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <FontAwesomeIcon icon={['fab', 'linkedin-in']} size="2x" />
+            </a>
+            <a href={c.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
+            </a>
+            <a href={c.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <FontAwesomeIcon icon={['fab', 'github']} size="2x" />
+            </a>
+          </div>
         </div>
-    ) 
+
+        <div className="flex-1 basis-full md:basis-1/2 md:pl-12">
+          <Terminal />
+        </div>
+      </main>
+    </div>
+  );
 }

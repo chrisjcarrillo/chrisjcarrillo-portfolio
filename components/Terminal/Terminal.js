@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import moment from 'moment';
+import { formatLastLogin } from '../../lib/formatDate';
 import BootSequence from './BootSequence';
 import CommandBar from './CommandBar';
 import { useVisitorInfo } from '../../hooks/useVisitorInfo';
@@ -16,7 +16,7 @@ export default function Terminal() {
   // Compute last-login on the client to avoid SSR/CSR hydration mismatch.
   const [lastLogin, setLastLogin] = useState('…');
   useEffect(() => {
-    setLastLogin(moment().format('dddd, MMMM Do YYYY, h:mm A'));
+    setLastLogin(formatLastLogin());
   }, []);
 
   const infoLines = [
