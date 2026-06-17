@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { formatLastLogin } from '../../lib/formatDate';
 import BootSequence from './BootSequence';
 import CommandBar from './CommandBar';
+import ThemeToggle from './ThemeToggle';
 import { useVisitorInfo } from '../../hooks/useVisitorInfo';
 import { useBootSequence } from '../../hooks/useBootSequence';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
@@ -13,7 +14,7 @@ const PROMPT_TEXT = '$ available commands:';
 export default function Terminal() {
   const reduced = usePrefersReducedMotion();
   const visitor = useVisitorInfo();
-  const { toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   const [lastLogin, setLastLogin] = useState('…');
   useEffect(() => {
@@ -79,7 +80,7 @@ export default function Terminal() {
           <span className="h-3 w-3 rounded-full inline-block bg-[var(--term-header-fg)]" />
         </span>
         <span className="flex-1 text-center text-sm">chris@portfolio: ~</span>
-        <span className="w-8" />
+        <ThemeToggle theme={theme} onToggle={toggleTheme} />
       </header>
 
       <div className="term-body flex-1 min-h-0 px-4 py-3 overflow-y-auto bg-[var(--term-bg)] text-[var(--term-fg)]">
