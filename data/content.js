@@ -3,6 +3,7 @@
 export const content = {
   alias: 'Chris',
   name: 'Chris Carrillo',
+  resumeUrl: '/resume.pdf',
   tagline: ['A Miami Based', 'Creative & Software Engineer'],
   about: [
     "I'm Chris Carrillo — a Miami-based creative and software engineer.",
@@ -26,13 +27,13 @@ export const content = {
     {
       name: 'Terminal Portfolio',
       description: 'This site — an interactive terminal built with Next.js.',
-      tech: 'Next.js · React',
+      tags: ['Next.js', 'React', 'Tailwind'],
       link: 'https://github.com/chrisjcarrillo',
     },
     {
       name: 'Placeholder Project',
       description: 'Short description of a cool thing you built. Replace with a real project.',
-      tech: 'React · Node',
+      tags: ['React', 'Node'],
       link: 'https://example.com',
     },
   ],
