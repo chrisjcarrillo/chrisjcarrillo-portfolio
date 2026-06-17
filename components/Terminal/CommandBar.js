@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { PRESET_COMMANDS } from '../../lib/commands';
 
 // Commands the Tab key can complete to.
-const COMPLETIONS = ['about', 'work', 'projects', 'contact', 'resume', 'theme', 'help', 'clear'];
+const COMPLETIONS = ['about', 'work', 'projects', 'contact', 'theme', 'help', 'clear'];
 
 // Clickable preset commands (primary) + a typed input with history (↑/↓) and Tab
 // autocomplete (secondary). Both paths call onRun(commandString).
