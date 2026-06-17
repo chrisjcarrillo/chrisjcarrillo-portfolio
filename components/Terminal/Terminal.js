@@ -5,6 +5,7 @@ import CommandBar from './CommandBar';
 import { useVisitorInfo } from '../../hooks/useVisitorInfo';
 import { useBootSequence } from '../../hooks/useBootSequence';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion';
+import { useTheme } from '../../hooks/useTheme';
 import { runCommand } from '../../lib/commands';
 
 const PROMPT_TEXT = '$ available commands:';
@@ -12,8 +13,8 @@ const PROMPT_TEXT = '$ available commands:';
 export default function Terminal() {
   const reduced = usePrefersReducedMotion();
   const visitor = useVisitorInfo();
+  const { toggleTheme } = useTheme();
 
-  // Compute last-login on the client to avoid SSR/CSR hydration mismatch.
   const [lastLogin, setLastLogin] = useState('…');
   useEffect(() => {
     setLastLogin(formatLastLogin());
@@ -29,17 +30,38 @@ export default function Terminal() {
   const { visibleCount, typed, done } = useBootSequence(infoLines.length, PROMPT_TEXT, { reduced });
 
   const [history, setHistory] = useState([]);
+  const [commandHistory, setCommandHistory] = useState([]);
   const idRef = useRef(0);
   const bottomRef = useRef(null);
 
   function handleRun(cmd) {
-    const result = runCommand(cmd);
+    const trimmed = cmd.trim();
+    if (!trimmed) return;
+
+    setCommandHistory((h) => [...h, trimmed]);
+
+    const result = runCommand(trimmed);
+
     if (result.clear) {
       setHistory([]);
       return;
     }
+
+    let output = result.output;
+    if (result.theme) {
+      const next = toggleTheme();
+      output = <span>theme switched to {next}</span>;
+    }
+    if (result.openUrl) {
+      try {
+        window.open(result.openUrl, '_blank', 'noopener');
+      } catch (e) {
+        /* ignore */
+      }
+    }
+
     idRef.current += 1;
-    setHistory((h) => [...h, { id: idRef.current, command: cmd, output: result.output }]);
+    setHistory((h) => [...h, { id: idRef.current, command: trimmed, output }]);
   }
 
   useEffect(() => {
@@ -49,18 +71,18 @@ export default function Terminal() {
   }, [history, done]);
 
   return (
-    <div className="w-full h-[calc(100vh-2rem)] md:h-[calc(100vh-3rem)] flex flex-col bg-white border border-black rounded overflow-hidden">
-      <header className="bg-black text-white flex items-center px-4 py-2">
+    <div className="w-full h-[calc(100vh-2rem)] md:h-[calc(100vh-3rem)] flex flex-col bg-[var(--term-bg)] text-[var(--term-fg)] border border-[var(--term-border)] rounded overflow-hidden">
+      <header className="flex items-center px-4 py-2 bg-[var(--term-header-bg)] text-[var(--term-header-fg)]">
         <span className="flex gap-2.5">
-          <span className="h-3 w-3 bg-white rounded-full inline-block" />
-          <span className="h-3 w-3 bg-white rounded-full inline-block" />
-          <span className="h-3 w-3 bg-white rounded-full inline-block" />
+          <span className="h-3 w-3 rounded-full inline-block bg-[var(--term-header-fg)]" />
+          <span className="h-3 w-3 rounded-full inline-block bg-[var(--term-header-fg)]" />
+          <span className="h-3 w-3 rounded-full inline-block bg-[var(--term-header-fg)]" />
         </span>
         <span className="flex-1 text-center text-sm">chris@portfolio: ~</span>
         <span className="w-8" />
       </header>
 
-      <div className="flex-1 min-h-0 bg-white text-black px-4 py-3 overflow-y-auto">
+      <div className="term-body flex-1 min-h-0 px-4 py-3 overflow-y-auto bg-[var(--term-bg)] text-[var(--term-fg)]">
         <BootSequence
           infoLines={infoLines}
           visibleCount={visibleCount}
@@ -79,7 +101,7 @@ export default function Terminal() {
             </div>
           ))}
 
-        {done && <CommandBar onRun={handleRun} />}
+        {done && <CommandBar onRun={handleRun} commandHistory={commandHistory} />}
         <div ref={bottomRef} />
       </div>
     </div>

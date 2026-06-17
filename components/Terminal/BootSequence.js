@@ -22,7 +22,7 @@ export default function BootSequence({ infoLines, visibleCount, typed, typingDon
         <span className="block font-bold mt-1.5 min-h-[1.4em]">
           {typed}
           {!typingDone && (
-            <span className="inline-block w-2 h-[1em] bg-black align-[-2px] ml-0.5 animate-blink" />
+            <span className="inline-block w-2 h-[1em] bg-[var(--term-accent)] align-[-2px] ml-0.5 animate-blink" />
           )}
         </span>
       </div>
