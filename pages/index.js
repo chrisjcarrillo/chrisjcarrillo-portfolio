@@ -10,6 +10,19 @@ export default function Home() {
           name="description"
           content="Chris Carrillo — a Miami-based creative and software engineer."
         />
+        <meta property="og:title" content="Chris Carrillo — Creative & Software Engineer" />
+        <meta
+          property="og:description"
+          content="An interactive terminal portfolio — a Miami-based creative and software engineer."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://chrisjcarrillo.dev" />
+        <meta property="og:image" content="https://chrisjcarrillo.dev/api/og" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Chris Carrillo — Creative & Software Engineer" />
+        <meta name="twitter:image" content="https://chrisjcarrillo.dev/api/og" />
       </Head>
 
       <Terminal />
